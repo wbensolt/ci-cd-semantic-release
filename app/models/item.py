@@ -8,5 +8,6 @@ class Item(SQLModel, table=True):
     nom: str = Field(index=True)
     prix: float
 
-    def _legacy_method(self):
+    def _legacy_method(self) -> None:
+        """Méthode interne héritée — ne fait rien."""
         pass
