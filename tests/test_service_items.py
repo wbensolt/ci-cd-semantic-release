@@ -1,7 +1,9 @@
 import pytest
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import Session, SQLModel, create_engine
+
 from app.schemas.item import ItemCreate, ItemUpdate
 from app.services.item_service import ItemService
+
 
 @pytest.fixture
 def engine():
