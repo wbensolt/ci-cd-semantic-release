@@ -8,21 +8,19 @@ on:
 
 jobs:
 
- lint:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v6
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.13"
-    - name: Install uv
-      run: pip install "uv>=0.7.19"
-    - name: Install dev dependencies
-      run: uv install -g dev
-    - name: Sync dependencies
-      run: uv sync
-    - name: Ruff lint
-      run: uv run ruff check .
-    - name: Ruff format check
-      run: uv run ruff format --check .
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        run: pip install "uv>=0.7.19"
+      - name: Sync dependencies
+        run: uv sync
+      - name: Ruff lint
+        run: uv run ruff check .
+      - name: Ruff format check
+        run: uv run ruff format --check .
