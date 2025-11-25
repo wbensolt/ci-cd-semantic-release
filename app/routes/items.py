@@ -6,6 +6,7 @@ from fastapi import (
     status,
 )
 from sqlmodel import Session
+from typing import List
 
 from app.database import get_db
 from app.schemas.item import ItemCreate, ItemResponse, ItemUpdate
@@ -19,7 +20,7 @@ def get_items(
     skip: int = 0,
     limit: int = 100,
     db: Session = Depends(get_db),  # noqa: B008
-):
+) -> List[ItemResponse]:
     """Récupère la liste des items avec pagination."""
     return ItemService.get_all(db, skip, limit)
 
@@ -28,7 +29,7 @@ def get_items(
 def get_item(
     item_id: int,
     db: Session = Depends(get_db),  # noqa: B008
-):
+) -> ItemResponse:
     item = ItemService.get_by_id(db, item_id)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
@@ -39,7 +40,7 @@ def get_item(
 def create_item(
     item_data: ItemCreate = Body(...),  # noqa: B008
     db: Session = Depends(get_db),  # noqa: B008
-):
+) -> ItemResponse:
     """Créer un nouvel item."""
     return ItemService.create(db, item_data)
 
@@ -49,7 +50,7 @@ def update_item(
     item_id: int,
     item_data: ItemUpdate,
     db: Session = Depends(get_db),  # noqa: B008
-):
+) -> ItemResponse:
     item = ItemService.update(db, item_id, item_data)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
@@ -60,7 +61,8 @@ def update_item(
 def delete_item(
     item_id: int,
     db: Session = Depends(get_db),  # noqa: B008
-):
+) -> None:
     deleted = ItemService.delete(db, item_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Item not found")
+    return None
