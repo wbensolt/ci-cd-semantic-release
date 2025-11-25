@@ -19,16 +19,10 @@ jobs:
       - name: Install uv
         run: pip install "uv>=0.7.19"
       - name: Sync dependencies
-        run: uv sync --all-groups --frozen
-      - name: Debug - Check venv
-        run: |
-          ls -la .venv/bin/ || echo ".venv does not exist"
-          uv pip list
+        run: uv sync --all-groups
+      - name: Verify ruff installed
+        run: uv pip list | grep ruff
       - name: Ruff lint
-        run: |
-          . .venv/bin/activate
-          ruff check .
+        run: uv run ruff check .
       - name: Ruff format check
-        run: |
-          . .venv/bin/activate
-          ruff format --check .
+        run: uv run ruff format --check .
