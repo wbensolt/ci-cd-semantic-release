@@ -1,5 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi import Body  # noqa: I001
+from fastapi import (
+    APIRouter,
+    Body,  # noqa: I001
+    Depends,
+    HTTPException,
+    status,
+)
 from sqlmodel import Session
 
 from app.database import get_db

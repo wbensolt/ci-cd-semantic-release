@@ -1,6 +1,7 @@
 """Configuration de la base de données et gestion des sessions."""
 
 import os
+
 from sqlmodel import Session, create_engine
 
 DATABASE_URL = os.getenv(
