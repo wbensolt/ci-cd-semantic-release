@@ -1,4 +1,3 @@
-
 from sqlmodel import Session, select
 
 from app.models.item import Item
@@ -6,7 +5,6 @@ from app.schemas.item import ItemCreate, ItemUpdate
 
 
 class ItemService:
-
     @staticmethod
     def get_all(db: Session, skip: int, limit: int) -> list[Item]:
         return list(db.exec(select(Item).offset(skip).limit(limit)).all())
