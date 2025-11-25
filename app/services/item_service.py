@@ -9,7 +9,8 @@ class ItemService:
 
     @staticmethod
     def get_all(db: Session, skip: int, limit: int) -> List[Item]:
-        return db.exec(select(Item).offset(skip).limit(limit)).all()
+        # Convertir en list pour correspondre au type List[Item]
+        return list(db.exec(select(Item).offset(skip).limit(limit)).all())
 
     @staticmethod
     def get_by_id(db: Session, item_id: int) -> Optional[Item]:
