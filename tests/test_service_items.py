@@ -24,7 +24,7 @@ def session(engine):
 # ------------------------------
 @pytest.fixture
 def sample_item_data():
-    return ItemCreate(nom="Test Item", description="A test item", prix=10.0)
+    return ItemCreate(nom="Test Item", prix=10.0)
 
 # ------------------------------
 # Tests CRUD
@@ -32,7 +32,6 @@ def sample_item_data():
 def test_create_item(session, sample_item_data):
     item = ItemService.create(session, sample_item_data)
     assert item.nom == sample_item_data.nom
-    assert item.description == sample_item_data.description
     assert item.prix == sample_item_data.prix
 
 def test_get_all_items(session, sample_item_data):
