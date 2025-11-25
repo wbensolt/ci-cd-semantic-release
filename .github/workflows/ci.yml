@@ -20,16 +20,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: Install dependencies
-        run: uv sync --all-groups
-      - name: Debug - List venv
-        run: |
-          echo "Checking .venv..."
-          ls -la .venv/bin/ 2>&1 | head -20 || echo ".venv/bin does not exist"
-          echo ""
-          echo "Checking with uv..."
-          uv pip list 2>&1 | head -20
+      - name: Install ruff with uv tool
+        run: uv tool install ruff
       - name: Ruff lint
-        run: uv run ruff check .
+        run: ruff check .
       - name: Ruff format check
-        run: uv run ruff format --check .
+        run: ruff format --check .
