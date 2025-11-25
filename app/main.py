@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from typing import AsyncGenerator, Dict
 
 from fastapi import FastAPI
 from sqlmodel import SQLModel
@@ -10,18 +11,18 @@ DEBUG_MODE = True
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Initialisation et fermeture."""
     if DEBUG_MODE:
         SQLModel.metadata.create_all(engine)
     yield
 
 
-app = FastAPI(lifespan=lifespan)
+app: FastAPI = FastAPI(lifespan=lifespan)
 
 app.include_router(items_router)
 
 
 @app.get("/")
-def root():
+def root() -> Dict[str, str]:
     return {"message": "API opérationnelle"}
