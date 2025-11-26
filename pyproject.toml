@@ -68,3 +68,36 @@ testpaths = ["tests"]
 python_files = "test_*.py"
 python_functions = "test_*"
 #addopts = "--strict-markers --cov=app --cov-report=term-missing"
+
+# ========================
+# Semantic Release configuration
+# ========================
+[tool.semantic_release]
+version_variable = "training_ci_cd_semantic_release.__version__"
+upload_to_git = true
+upload_to_pypi = false
+branch_prefixes = ["main", "develop"]
+
+[tool.semantic_release.branches.main]
+match = "main"
+
+[tool.semantic_release.branches.develop]
+match = "develop"
+
+
+[tool.semantic_release.changelog]
+file = "CHANGELOG.md"
+
+[tool.semantic_release.commit_parser_options]
+# On utilise Conventional Commits par défaut
+version_strategy = "semantic"
+conventional_regex = "^(?P<type>feat|fix|perf|refactor|docs|test|chore)(\\((?P<scope>[^)]+)\\))?: (?P<description>.+)$"
+breaking_change_pattern = "BREAKING CHANGE"
+
+[tool.semantic_release.remote]
+name = "origin"
+# url sera détectée automatiquement
+
+[tool.semantic_release.publish]
+# Configuration pour créer la release GitHub
+release_notes = true
