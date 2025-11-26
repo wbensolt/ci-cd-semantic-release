@@ -17,13 +17,14 @@ permissions:
 
 jobs:
   release:
-    # Ne s'exécute que si la CI a réussi
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # récupère tous les commits et tags
 
       - name: Set up Python
         uses: actions/setup-python@v4
