@@ -2,6 +2,41 @@
 
 <!-- version list -->
 
+## v1.0.7 (2025-11-27)
+
+### Bug Fixes
+
+- Release pipelineOut
+  ([`b2a9e99`](https://github.com/wbensolt/ci-cd-semantic-release/commit/b2a9e99364ca40259db768f8bb9bdf4f49b980b6))
+
+
+## v1.0.6 (2025-11-27)
+
+### Bug Fixes
+
+- Release pipeline
+  ([`bc21549`](https://github.com/wbensolt/ci-cd-semantic-release/commit/bc215490d71c5d50c27d1d1d27beebcbd0665839))
+
+- Release pipeline2
+  ([`365fab9`](https://github.com/wbensolt/ci-cd-semantic-release/commit/365fab990b7944d5c5ddbb51be8f891a49095958))
+
+
+## v1.0.5 (2025-11-27)
+
+### Bug Fixes
+
+- Release pipeline
+  ([`5b41201`](https://github.com/wbensolt/ci-cd-semantic-release/commit/5b41201672eefbfb9c90515ca77f1eccf03e2d56))
+
+
+## v1.0.4 (2025-11-27)
+
+### Bug Fixes
+
+- Release2
+  ([`c3c18f2`](https://github.com/wbensolt/ci-cd-semantic-release/commit/c3c18f209ab148204782f57d4f3dbe57d7c31adc))
+
+
 ## v1.0.3 (2025-11-27)
 
 ### Bug Fixes
