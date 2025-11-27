@@ -95,10 +95,6 @@ prerelease = false                # false = versions stables (1.0.0, 1.1.0, 2.0.
 match = "develop"                 # Nom de la branche à matcher
 prerelease = true
 
-# BRANCHE DEVELOP - Versions de pré-release (RC = Release Candidate)
-[tool.semantic_release.branches]
-"test/pr-semantic-release" = {match = "^test/pr-semantic-release$", prerelease=true, prerelease_token="rc"}
-
 
 # Format des tags Git créés (ex: v1.2.3)
 #tag_format = "v{version}"
