@@ -76,8 +76,8 @@ jobs:
                 GH_TOKEN: ${{ steps.get_token.outputs.token }}
               run: |
                 # Configure l'identité Git pour les commits automatiques
-                git config user.name "WaelCheck-bot[bot]"
-                git config user.email "WaelCheck-bot[bot]@users.noreply.github.com"
+                git config user.name "WaelCheck[bot]"
+                git config user.email "WaelCheck[bot]@users.noreply.github.com"
 
                 # uv run : Exécute la commande dans l'environnement de l'outil installé
                 # version --changelog : Détermine la nouvelle version et met à jour le changelog
