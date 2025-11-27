@@ -1,5 +1,5 @@
 from sqlmodel import Field, SQLModel
-from typing import Optional
+
 
 class Item(SQLModel, table=True):
     __tablename__ = "items"
@@ -8,5 +8,6 @@ class Item(SQLModel, table=True):
     nom: str = Field(index=True)
     prix: float
 
-    def _legacy_method(self):
+    def _legacy_method(self) -> None:
+        """Méthode interne héritée — ne fait rien."""
         pass

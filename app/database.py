@@ -1,23 +1,22 @@
-"""Configuration de la base de données et gestion des sessions.
-
-Ce module gère la connexion à la base de données PostgreSQL
-et fournit une fonction générateur pour obtenir des sessions de base de données.
-"""
-
-from sqlmodel import create_engine, Session
 import os
-import sys
-from typing import Generator
+from collections.abc import Generator
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/items_db"
-)
+from dotenv import load_dotenv
+from sqlmodel import Session, create_engine
 
-POOL_SIZE = 10
+load_dotenv(".env")
 
-engine = create_engine(DATABASE_URL)
+# Récupérer la base de données depuis les secrets ou variables d'environnement
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL must be set in environment variables")
+
+POOL_SIZE = int(os.getenv("POOL_SIZE", 10))
+
+engine = create_engine(DATABASE_URL, pool_size=POOL_SIZE)
 
 
-def get_db():
+def get_db() -> Generator[Session]:
+    """Créer une session SQLModel pour chaque requête."""
     with Session(engine) as session:
         yield session
