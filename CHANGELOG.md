@@ -2,6 +2,17 @@
 
 <!-- version list -->
 
+## v1.0.6 (2025-11-27)
+
+### Bug Fixes
+
+- Release pipeline
+  ([`bc21549`](https://github.com/wbensolt/ci-cd-semantic-release/commit/bc215490d71c5d50c27d1d1d27beebcbd0665839))
+
+- Release pipeline2
+  ([`365fab9`](https://github.com/wbensolt/ci-cd-semantic-release/commit/365fab990b7944d5c5ddbb51be8f891a49095958))
+
+
 ## v1.0.5 (2025-11-27)
 
 ### Bug Fixes
